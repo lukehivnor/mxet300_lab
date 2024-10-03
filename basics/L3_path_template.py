@@ -42,9 +42,11 @@ for  count, motion in enumerate(motions):
     x_dot = round(motion[0], 2)
     theta_dot = round(motion[1],2)
     duration = round(motion[2],2)
+    '''
     log.tmpFile(x_dot, 'xdot.txt') #/tmp/xdot.tx
     log.tmpFile(theta_dot, 'thetadot.txt') #/tmp/thetadot.txt
     log.tmpFile(duration, 'duration.txt')
+    '''
     volt = L1_ina.readVolts()
 
 
