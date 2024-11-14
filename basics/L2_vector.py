@@ -64,4 +64,4 @@ if __name__ == "__main__":
     while True:
         myVector = getNearest()                                 # call the function which utilizes several functions in this program
         print("\n The nearest object (m,deg):\n", myVector)     # print the result
-        time.sleep(0.1)                                         # small delay
+        time.sleep(0.05)                                         # small delay

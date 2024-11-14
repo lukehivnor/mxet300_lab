@@ -13,12 +13,12 @@ phi_max = 7.
 DRS = 1.0                                           # direct rescaling - for open-loop motor duty
 
 kp_left = 0.04                                          # proportional term
-ki_left = 0.04                                         # integral term
-kd_left = 0.04                                            # derivative term
+ki_left = 0                                         # integral term
+kd_left = 0                                            # derivative term
 
 kp_right = 0.04                                           # proportional term
-ki_right = 0.04                                           # integral term
-kd_right = 0.00                                            # derivative term
+ki_right = 0                                           # integral term
+kd_right = 0                                            # derivative term
 pidGains = np.array([[kp_left, kp_right], 
                      [ki_left, ki_right], 
                      [kd_left, kd_right]])                   # form an array to collect pid gains.
@@ -27,8 +27,9 @@ pidGains = np.array([[kp_left, kp_right],
 def openLoop(pdl, pdr):
     duties = np.array([pdl, pdr])                   # put the values into an array
     duties = duties * 1/phi_max * DRS               # rescaling. 1=max PWM, 7. = max rad/s achievable
-    duties[0] = sorted([-0.99, duties[0], 0.99])[1] # place bounds on duty cycle
-    duties[1] = sorted([-0.99, duties[1], 0.99])[1] # place bounds on duty cycle
+    duties[0] = max(-0.99, min(duties[0], 0.99)) # place bounds on duty cycle
+    duties[1] = max(-0.99, min(duties[1], 0.99)) # place bounds on duty cycle
+    print("Duties in openloop: ", duties)
     return duties
 
 def scalingFunction(x):                             # a fcn to compress the PWM region where motors don't turn
