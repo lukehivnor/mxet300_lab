@@ -13,12 +13,12 @@ phi_max = 7.
 DRS = 1.0                                           # direct rescaling - for open-loop motor duty
 
 kp_left = 0.04                                          # proportional term
-ki_left = 0                                         # integral term
-kd_left = 0                                            # derivative term
+ki_left = 0.04                                         # integral term
+kd_left = 0.01                                            # derivative term
 
 kp_right = 0.04                                           # proportional term
-ki_right = 0                                           # integral term
-kd_right = 0                                            # derivative term
+ki_right = 0.04                                         # integral term
+kd_right = 0.01                                            # derivative term
 pidGains = np.array([[kp_left, kp_right], 
                      [ki_left, ki_right], 
                      [kd_left, kd_right]])                   # form an array to collect pid gains.
