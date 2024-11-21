@@ -190,7 +190,7 @@ if __name__ == "__main__":
                 L2_speed_control.driveOpenLoop(np.array([4.0,-2.0]))
                 sleep(2)
             if ((0.05<m < 0.35) and ( 45<deg<90)):
-                L2_speed_control.driveOpenLoop(np.array([4.0,-2.0]))
+                L2_speed_control.driveOpenLoop(np.array([5.0,-2.0]))
                 sleep(2)
             ### right obstacle
             if ((0.35<m < 0.8) and ( -45<deg<0)):
@@ -199,7 +199,7 @@ if __name__ == "__main__":
                 L2_speed_control.driveOpenLoop(np.array([-2.0,4.0]))
                 sleep(2)
             if ((0.05<m < 0.35) and ( -90<deg<-45)):
-                L2_speed_control.driveOpenLoop(np.array([-2.0,4.0]))
+                L2_speed_control.driveOpenLoop(np.array([-2.0,5.0]))
                 sleep(2)
             else:
                 continue
