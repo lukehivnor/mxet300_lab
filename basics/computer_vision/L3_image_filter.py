@@ -11,7 +11,11 @@ color_range = np.array([[0, 0, 0], [255, 255, 255]]) # declare HSV range before 
 
 class MyFilter:
 
+<<<<<<< HEAD
     def colorTracking(self, image, range=color_range, min_size=3, max_size=6):
+=======
+    def colorTracking(self, image, range=color_range, min_size=6, max_size=6):
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
 
         image = cv2.resize(image,(width,height)) # resize the image
 

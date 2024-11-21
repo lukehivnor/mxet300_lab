@@ -9,6 +9,7 @@ import lidar_driving
 import numpy as np
 from time import sleep
 from math import radians, pi
+<<<<<<< HEAD
 import cv2              # For image capture and processing
 import numpy as np      
     
@@ -173,6 +174,26 @@ def spiral():
     b = outer_radius / theta_max  # Calculate 'b' based on outer radius
     # Generate theta values from 0 to theta_max
     theta = np.linspace(0, theta_max, 100)
+=======
+
+np.set_printoptions(precision=3)
+
+
+def rotor():
+    pass
+
+
+def camera():
+    pass
+
+
+def spiral():
+    outer_radius = 10  # Outer radius in meters
+    theta_max = 2 * np.pi  # Maximum angle in radians (adjust for tighter or looser spiral)
+    b = outer_radius / theta_max  # Calculate 'b' based on outer radius
+    # Generate theta values from 0 to theta_max
+    theta = np.linspace(0, theta_max, 1000)
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
     # Calculate r for each theta (Archimedean spiral formula)
     r = b * theta
 
@@ -268,7 +289,10 @@ def closed_loop_drive():
         time.sleep(0.05)  # this time controls the frequency of the controller
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
 if __name__ == "__main__":
     while True:
         vec = spiral()
@@ -287,7 +311,10 @@ if __name__ == "__main__":
         phil, phir = driver(xdot, thetadot)
 
         L2_speed_control.openLoop(0., 0.)
+<<<<<<< HEAD
         cam_setup()
+=======
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
 
         for k in range(len(phil)):
             # duty = L2_speed_control.openLoop(phil[k], phir[k])
@@ -323,11 +350,15 @@ if __name__ == "__main__":
             '''
 
             m, deg, x, y = avoid()
+<<<<<<< HEAD
             camera()
+=======
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
             
             print("m = ", m, " and deg =", deg)
             print("desired phil = ",pdTargets[0],"desired phir = ", pdTargets[1])
             print('current phil= ', pdCurrents[0] , 'current phir =  ', pdCurrents[1])
+<<<<<<< HEAD
             
             # need fnct to relay if obstacle is in path, avoid
             # positive deg is left, neg deg is right
@@ -359,5 +390,14 @@ if __name__ == "__main__":
                 L2_speed_control.driveOpenLoop(np.array([-3.0,4.0]))
                 sleep(2)
             else:
+=======
+            deg = abs(deg)
+            # need fnct to relay if obstacle is in path, avoid
+            if ((m < 0.5) and ( deg<20)):
+                L2_speed_control.driveOpenLoop(np.array([0.,0.]))
+                sleep(2)
+            else:
+                
+>>>>>>> 05963538bafd2b30cab50db9595ddda94bfac97d
                 continue
 
