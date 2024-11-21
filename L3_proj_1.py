@@ -183,23 +183,32 @@ if __name__ == "__main__":
             
             # need fnct to relay if obstacle is in path, avoid
             # positive deg is left, neg deg is right
+            
+            # corner logic
+            if ((0.05<m < 0.7) and ( -45<deg<45)):
+                L2_speed_control.driveOpenLoop(np.array([-4.0,-4.0]))
+                sleep(1)
+                L2_speed_control.driveOpenLoop(np.array([-4.0,4.0]))
+                sleep(2)
             ### left obstacle
-            if ((0.35<m < 0.8) and ( 0<deg<45)):
+            elif ((0.45<m < 0.8) and ( 0<deg<60)):
                 L2_speed_control.driveOpenLoop(np.array([-4.0,-4.0]))
+                sleep(1)
+                L2_speed_control.driveOpenLoop(np.array([3.0,-3.0]))
                 sleep(2)
-                L2_speed_control.driveOpenLoop(np.array([4.0,-2.0]))
+            elif ((0.05<m < 0.45) and ( 45<deg<90)):
+                L2_speed_control.driveOpenLoop(np.array([4.0,-3.0]))
                 sleep(2)
-            if ((0.05<m < 0.35) and ( 45<deg<90)):
-                L2_speed_control.driveOpenLoop(np.array([5.0,-2.0]))
-                sleep(2)
+            else:
+                continue
             ### right obstacle
-            if ((0.35<m < 0.8) and ( -45<deg<0)):
+            if ((0.45<m < 0.8) and ( -60<deg<0)):
                 L2_speed_control.driveOpenLoop(np.array([-4.0,-4.0]))
+                sleep(1)
+                L2_speed_control.driveOpenLoop(np.array([-3.0,3.0]))
                 sleep(2)
-                L2_speed_control.driveOpenLoop(np.array([-2.0,4.0]))
-                sleep(2)
-            if ((0.05<m < 0.35) and ( -90<deg<-45)):
-                L2_speed_control.driveOpenLoop(np.array([-2.0,5.0]))
+            elif ((0.05<m < 0.45) and ( -90<deg<-45)):
+                L2_speed_control.driveOpenLoop(np.array([-3.0,4.0]))
                 sleep(2)
             else:
                 continue
