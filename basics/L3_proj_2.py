@@ -88,13 +88,18 @@ def initialize_camera():
     """Initializes the camera and sets resolution."""
     global camera, cam_on
     cam_on = True
-    cv2.destroyAllWindows()
+    
     camera_url = "http://10.250.23.243:8090/?action=stream"
     
     # Attempt to get the camera stream
     index = -1
-    camera = cv2.VideoCapture(index)  
-           
+    try:
+        camera = cv2.VideoCapture(index, cv2.CAP_FFMPEG)
+    except:
+        camera = cv2.VideoCapture(camera_url)
+    
+     
+    
     sleep(0.1)
     if not camera or not camera.isOpened():
         raise RuntimeError("Failed to initialize camera.")
